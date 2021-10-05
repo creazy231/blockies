@@ -40,15 +40,15 @@ class Helpers
             $seed = base_convert(floor(Helpers::randomFloat(0, 1) * pow(10, 16)), 10, 16);
             $sqrt = sqrt(floatval($seed));
 
-            if ($sqrt > 16 || $sqrt < 8) {
+            if ($sqrt > 64 || $sqrt < 8) {
                 return static::seed();
             }
 
             return $seed;
         }
 
-        if (strlen($seed) < 8 || strlen($seed) > 16) {
-            throw new InvalidArgumentException('Seed must be a minimum of 8 characters and a maximum of 16 characters.');
+        if (strlen($seed) < 8 || strlen($seed) > 64) {
+            throw new InvalidArgumentException('Seed must be a minimum of 8 characters and a maximum of 64 characters.');
         }
 
         return $seed;
